@@ -1,0 +1,37 @@
+<div class="row" *ngIf="recipe; else NoItemsToShow">
+  <div class="col-xs-12">
+    <div class="row">
+      <img [src]="recipe?.imgPath" width="250px" height="200" />
+    </div>
+    <div class="dropdown" appDropdown>
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Manage Recipe
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu " aria-labelledby="dropdownMenu1">
+        <li><a (click)="addToShoppingList()">To Shopping List</a></li>
+        <li><a [routerLink]="'edit'">Edit Recipe</a></li>
+        <li><a>Something else here</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a>Separated link</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">{{ recipe?.name }} ({{recipe.id}})</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">{{ recipe?.description }}</div>
+    <p><b>Ingridient List:</b></p>
+    <ul class="list-group">
+      <li class="list-grou-item" *ngFor="let ingridient of recipe.ingridients">{{ ingridient.name }} ({{ ingridient.amount}})</li>
+    </ul>
+  </div>
+
+</div>
+
+
+
+<ng-template #NoItemsToShow>
+  Selecte one item to show more...
+</ng-template>

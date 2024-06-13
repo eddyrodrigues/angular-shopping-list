@@ -1,0 +1,14 @@
+<div class="row">
+  <form #formRef="ngForm" (ngSubmit)="onSubmit(formRef)">
+    <div class="col-6">
+      <label for="recipeName">Recipe Name:</label>
+      <input id="recipeName" [(ngModel)]="newEditRecipe.name" ngModel name="recipeName" />
+    </div>
+    <div class="col-6">
+      <label for="recipeDescription">Recipe Description:</label>
+      <input id="recipeDescription" [(ngModel)]="newEditRecipe.description" ngModel name="recipeDescription" />
+    </div>
+    <button class="btn btn-primary">{{ isAddingNewRecipe ? 'Add' : 'Save'}} Recipe</button>
+    <!-- <a class="btn btn-primary" (click)="onAddRecipe()" *ngIf="isAddingNewRecipe">Add Recipe</a> -->
+  </form>
+</div>

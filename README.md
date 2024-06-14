@@ -13,3 +13,4 @@ What you are going to see in that repository in terms of Angular:
 - @Input() [Property] and @Output() [Events] with Alias
 - A little bit of Css
 - @ViewChild() acessing the ElementRef<HTMLInputElement> to work with the nativeElement
+- ReactiveFormsModule - FormGroup

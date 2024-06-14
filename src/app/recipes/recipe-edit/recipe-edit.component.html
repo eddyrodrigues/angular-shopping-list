@@ -1,14 +1,38 @@
-<div class="row">
-  <form #formRef="ngForm" (ngSubmit)="onSubmit(formRef)">
-    <div class="col-6">
-      <label for="recipeName">Recipe Name:</label>
-      <input id="recipeName" [(ngModel)]="newEditRecipe.name" ngModel name="recipeName" />
+<form [formGroup]="recipeReactiveForm" (ngSubmit)="onSubmit()">
+  <!-- <a class="btn btn-primary" (click)="onAddRecipe()" *ngIf="isAddingNewRecipe">Add Recipe</a> -->
+  <div class="col-sm-12">
+    <div class="col-sm-12">
+      <img [src]="newEditRecipe?.imgPath" width="250px" height="200" />
     </div>
-    <div class="col-6">
-      <label for="recipeDescription">Recipe Description:</label>
-      <input id="recipeDescription" [(ngModel)]="newEditRecipe.description" ngModel name="recipeDescription" />
+    <div class="col-sm-12">
+      <div class="input-group input-group-sm">
+        <label for="inputRecipeId">Recipe Id:</label>
+        <input type="text" name="RecipeId" id="inputRecipeId" class="form-control" [value]="newEditRecipe.id" disabled>
+      </div>
+      <div class="input-group input-group-sm">
+        <label for="inputRecipeName">Recipe Name:</label>
+        <input type="text" name="RecipeName" id="inputRecipeName" class="form-control" formControlName="name">
+      </div>
+      <div class="input-group input-group-sm">
+        <label for="inputRecipeDescription">Recipe Description:</label>
+        <input type="text" name="RecipeDescription" id="inputRecipeDescription" class="form-control" formControlName="description">
+      </div>
+      <!-- <div class="input-group input-group-sm"> -->
+      <!-- <label for="inputRecipeImgPath">Recipe Description:</label> -->
+      <!-- <input type="" name="RecipeImg" id="inputRecipeImgPath" class="form-control"> -->
+      <!-- <input type="file" id="inputRecipeImgPath" name="RecipeImg" accept="image/*"> -->
+      <!-- </div> -->
     </div>
-    <button class="btn btn-primary">{{ isAddingNewRecipe ? 'Add' : 'Save'}} Recipe</button>
-    <!-- <a class="btn btn-primary" (click)="onAddRecipe()" *ngIf="isAddingNewRecipe">Add Recipe</a> -->
-  </form>
-</div>
+    <div class="col-sm-12">
+      <p><b>Ingridient List:</b></p>
+      <div class="list-group">
+        <li class="list-group-item" *ngFor="let ingridient of newEditRecipe.ingridients">{{ ingridient.name }} ({{ ingridient.amount}})</li>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary" type="submit">{{ isAddingNewRecipe ? 'Add' : 'Save'}} Recipe</button>
+</form>
+
+<ng-template #NoItemsToShow>
+  Select one item to show more...
+</ng-template>

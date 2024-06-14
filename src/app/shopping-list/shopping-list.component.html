@@ -2,6 +2,11 @@
   <div class="col-xs-12">
     <app-shopping-edit></app-shopping-edit>
     <hr>
-    <p *ngFor="let ing of ingList">{{ ing.name }} ({{ ing.amount}})</p>
+    <div class="col-sm-12 mt-2">
+      <p><b>Ingridient List:</b></p>
+      <div class="list-group">
+        <li class="list-group-item" *ngFor="let ing of ingList">{{ ing.name }} ({{ ing.amount}})</li>
+      </div>
+    </div>
   </div>
 </div>

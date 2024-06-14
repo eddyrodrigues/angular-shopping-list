@@ -1,18 +1,14 @@
-<div class="row">
-  <div class="col-xs-12">
-    <button class="btn btn-success" routerLink="new">New Recipe</button>
+<button class="btn btn-success" routerLink="new">New Recipe</button>
+<div class="col-sm-12">
+  <div class="form-group form-inline">
+    <div class="col-sm-12">
+      <label for="searchFor">Search for:</label>
+      <input class="form-control" type="text" id="searchFor" (change)="onSearchForName()" [(ngModel)]="searchForText">
+      <button class="form-control" (click)="onSearchForName()">Search</button>
+    </div>
   </div>
 </div>
 <hr>
-<div class="row">
-  <div class="col-md-12">
-    <label for="searchFor">Search for:</label>
-    <input type="text" id="searchFor" (change)="onSearchForName()" [(ngModel)]="searchForText">
-    <button (click)="onSearchForName()">Search</button>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-7">
-    <app-recipe-item *ngFor="let recipeItem of recipes" [recipeItem]="recipeItem"></app-recipe-item>
-  </div>
+<div class="col-sm-12">
+  <app-recipe-item *ngFor="let recipeItem of recipes" [recipeItem]="recipeItem"></app-recipe-item>
 </div>

@@ -33,6 +33,7 @@ export class RecipesService {
   }
 
   AddRecipe(recipe: Recipe) {
+    recipe.id = this.recipes[this.recipes.length - 1].id + 1;
     this.recipes.push(recipe);
   }
 

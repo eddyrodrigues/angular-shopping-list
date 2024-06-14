@@ -1,8 +1,6 @@
-<div class="row" *ngIf="recipe; else NoItemsToShow">
-  <div class="col-xs-12">
-    <div class="row">
-      <img [src]="recipe?.imgPath" width="250px" height="200" />
-    </div>
+<div class="col-sm-12" *ngIf="recipe; else NoItemsToShow">
+  <div class="col-sm-12">
+    <img [src]="recipe?.imgPath" width="250px" height="200" />
     <div class="dropdown" appDropdown>
       <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
         Manage Recipe
@@ -17,21 +15,31 @@
       </ul>
     </div>
   </div>
-  <div class="row">
-    <div class="col-xs-12">{{ recipe?.name }} ({{recipe.id}})</div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12">{{ recipe?.description }}</div>
-    <p><b>Ingridient List:</b></p>
-    <ul class="list-group">
-      <li class="list-grou-item" *ngFor="let ingridient of recipe.ingridients">{{ ingridient.name }} ({{ ingridient.amount}})</li>
-    </ul>
-  </div>
+  <div class="col-sm-12">
+    <div class="input-group input-group-sm">
+      <label for="inputRecipeId">Recipe Id:</label>
+      <input type="text" name="RecipeId" id="inputRecipeId" class="form-control" [value]="recipe?.id" disabled>
+    </div>
+    <div class="input-group input-group-sm">
+      <label for="inputRecipeName">Recipe Name:</label>
+      <input type="text" name="RecipeName" id="inputRecipeName" class="form-control" [value]="recipe?.name" disabled>
+    </div>
+    <div class="input-group input-group-sm">
+      <label for="inputRecipeDescription">Recipe Description:</label>
+      <input type="text" name="RecipeDescription" id="inputRecipeDescription" class="form-control" [value]="recipe?.description" disabled>
+    </div>
 
+  </div>
+  <div class="col-sm-12">
+    <p><b>Ingridient List:</b></p>
+    <div class="list-group">
+      <li class="list-group-item" *ngFor="let ingridient of recipe.ingridients">{{ ingridient.name }} ({{ ingridient.amount}})</li>
+    </div>
+  </div>
 </div>
 
 
 
 <ng-template #NoItemsToShow>
-  Selecte one item to show more...
+  Select one item to show more...
 </ng-template>

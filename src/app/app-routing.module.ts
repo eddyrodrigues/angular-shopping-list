@@ -13,7 +13,7 @@ const appRoutes: Routes = [
   {
     path: 'shopping-list',
     component: ShoppingListComponent,
-    canActivate: [canActive],
+    // canActivate: [canActive], // turn off app login and logout function
   },
   {
     path: 'recipes',
@@ -21,8 +21,8 @@ const appRoutes: Routes = [
     children: [
       { path: '', component: RecipeStartComponent },
       { path: 'new', component: RecipeEditComponent },
-      { path: ':id', component: RecipeDetailComponent },
       { path: ':id/edit', component: RecipeEditComponent },
+      { path: ':id', component: RecipeDetailComponent },
     ],
   },
   { path: 'not-found', component: NotFoundComponent },
